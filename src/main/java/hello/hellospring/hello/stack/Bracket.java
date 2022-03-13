@@ -36,6 +36,8 @@ public class Bracket {
     /**
      * 괄호 수식과 여는 괄의 위치가 주어졌을 때 그에 대응하는 닫힌 괄호의 위치를 찾는 코드를 작성하라.
      * ex. [{1 + 2 * (2 + 2)} - (1 - 3)], 1(index {) -> 11번째 인덱스
+     * 공간복잡도 O(N)
+     * 시간복잡도 O(N)
      */
     public int findIndexPairExist(String targets, int openingIndex) {
         Stack<Character> stack = new Stack<>();
@@ -61,6 +63,8 @@ public class Bracket {
      * 괄호 몇개를 뒤집어야 정상적인 수식을 만들 수 있는지 계산하는 코드를 작성하라.
      * }}}}{}}} => 3
      * {{{{ => 2
+     * 공간복잡도 O(N)
+     * 시간복잡도 O(N)
      */
     public int calculateBracketCountToReverse(String targets) {
         Stack<Character> stack = new Stack<>();
@@ -93,9 +97,8 @@ public class Bracket {
      * 예) ((1+2))+3 =>true
      * 예) 1+(2*3)=> false (산술적으로는 불필요하지만 이 문제에서는 이런 괄호는
      * 유효하다고 가정한다)
-     * 예) 1+(2)*3 => true(2를 감싸고 있는 괄호는 불필요하다)
-     * 1. (,+,*,)로 stack이 있는지 확인한 후 push
-     * 2. (+) => true, (*) => false
+     * 공간복잡도 O(N)
+     * 시간복잡도 O(N)
      */
     public boolean isIncludeBracketToNeed(String targets) {
         Stack<Character> stack = new Stack<>();
