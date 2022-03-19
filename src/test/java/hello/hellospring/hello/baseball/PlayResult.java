@@ -1,4 +1,4 @@
-package hello.hellospring.baseball;
+package hello.hellospring.hello.baseball;
 
 import hello.hellospring.hello.model.Status;
 

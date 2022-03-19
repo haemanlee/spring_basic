@@ -1,4 +1,4 @@
-package hello.hellospring.charactercalculator;
+package hello.hellospring.hello.charactercalculator;
 
 import hello.hellospring.hello.charactercalculator.CharCalculator;
 import org.assertj.core.api.Assertions;

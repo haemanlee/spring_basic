@@ -49,7 +49,15 @@ public class PostFixCalculator {
         return stack.pop();
     }
 
-    public int postFixToInfix() {
-        return 0;
+    /**
+     * 인픽스 => 포스트픽스
+     * 인픽스 예) 1+2*3, (1-(2+3))*5
+     * 포스트픽스 예) 123*+ ,*-+2315
+     */
+
+    public String infixToPostFix() {
+        return null;
     }
+
+
 }

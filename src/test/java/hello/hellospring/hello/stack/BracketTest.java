@@ -1,4 +1,4 @@
-package hello.hellospring.stack;
+package hello.hellospring.hello.stack;
 
 import hello.hellospring.hello.stack.Bracket;
 import hello.hellospring.hello.stack.BracketIndex;

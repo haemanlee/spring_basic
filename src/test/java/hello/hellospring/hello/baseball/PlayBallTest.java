@@ -1,4 +1,4 @@
-package hello.hellospring.baseball;
+package hello.hellospring.hello.baseball;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

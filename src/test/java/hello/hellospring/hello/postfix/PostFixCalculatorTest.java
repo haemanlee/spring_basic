@@ -1,4 +1,4 @@
-package hello.hellospring.postfix;
+package hello.hellospring.hello.postfix;
 
 import hello.hellospring.hello.postfix.PostFixCalculator;
 import org.assertj.core.api.Assertions;
@@ -27,11 +27,5 @@ public class PostFixCalculatorTest {
 
     }
 
-    @Test
-    void test_postfix_to_infix(){
-        PostFixCalculator postFixCalculator = new PostFixCalculator("123+-");
-        Assertions.assertThat(postFixCalculator.postFixToInfix()).isEqualTo("-+321");
-
-    }
 
 }
