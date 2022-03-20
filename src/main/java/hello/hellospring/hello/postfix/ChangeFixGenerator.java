@@ -99,6 +99,7 @@ public class ChangeFixGenerator {
     public static String infixToPrefix(String formula) {
         String prefix = "";
         Stack<Character> operators = new Stack<>();
+        System.out.println(formula);
 
         for (int i = formula.length() - 1; i >= 0; --i) {
             char ch = formula.charAt(i);

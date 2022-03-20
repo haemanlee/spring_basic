@@ -1,4 +1,4 @@
-package hello.hellospring.cargame.v1;
+package hello.hellospring.cargame.v2;
 
 public interface MovingStrategy {
     boolean movable();

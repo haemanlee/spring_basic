@@ -1,6 +1,5 @@
-package hello.hellospring.cargame.v1;
+package hello.hellospring.cargame.v2;
 
-import hello.hellospring.cargame.v1.Car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,6 @@ public class CarTest {
 
     @Test
     void over_5_car_name(){
-//        Car car = new Car("haemanlee");
         Assertions.assertThatThrownBy(() -> new Car("haemanlee"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 이름은 5이하여야 합니다.");
@@ -32,26 +30,26 @@ public class CarTest {
     @Test
     void car_move_test(){
         car.isMove(() -> false);
-        Assertions.assertThat(car.getMoveCount()).isEqualTo(0);
+        Assertions.assertThat(car.showMoveCount()).isEqualTo(0);
 
     }
 
     @Test
     void car_stop_test(){
         car.isMove(() -> true);
-        Assertions.assertThat(car.getMoveCount()).isEqualTo(1);
+        Assertions.assertThat(car.showMoveCount()).isEqualTo(1);
 
     }
 
 
     @Test
     void showMoveCount() {
-        car.isMove();
-        if(car.getMoveCount() == 0){
-            Assertions.assertThat(car.showMoveCount()).isEqualTo("");
+        car.isMove(new RandomMovingStrategy());
+        if(car.showMoveCount() == 0){
+            Assertions.assertThat(car.displayMoveCount()).isEqualTo("");
         }
-        if(car.getMoveCount() == 1){
-            Assertions.assertThat(car.showMoveCount()).isEqualTo("-");
+        if(car.showMoveCount() == 1){
+            Assertions.assertThat(car.displayMoveCount()).isEqualTo("-");
         }
 
     }

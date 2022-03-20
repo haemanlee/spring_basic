@@ -1,8 +1,9 @@
-package hello.hellospring.cargame.v1;
+package hello.hellospring.cargame.v2;
+
 
 import java.util.Random;
 
-public class RandomMovingStrategy implements MovingStrategy{
+public class RandomMovingStrategy implements MovingStrategy {
     private final static int FINAL_NUM = 10;
     private final static int FORWARD_NUM = 4;
 

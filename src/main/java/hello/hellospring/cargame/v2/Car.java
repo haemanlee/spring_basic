@@ -1,11 +1,12 @@
-package hello.hellospring.cargame.v1;
+package hello.hellospring.cargame.v2;
+
+import hello.hellospring.cargame.v2.MovingStrategy;
 
 import java.util.Random;
 
 public class Car {
     private final static int FINAL_NUM = 10;
     private final static int FORWARD_NUM = 4;
-
 
     private String name;
     private int moveCount;
@@ -17,15 +18,17 @@ public class Car {
         this.name = name;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
-
-    public int getMoveCount() {
+    private int getMoveCount() {
         return moveCount;
     }
+    private boolean nameSizeValidation(String name){
+        return name.length() <= 5;
+    }
 
-    public String showMoveCount(){
+    public String displayMoveCount(){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < moveCount; i++) {
             sb.append("-");
@@ -33,35 +36,17 @@ public class Car {
         return String.valueOf(sb);
     }
 
-    private boolean nameSizeValidation(String name){
-        return name.length() <= 5;
-    }
-
-
     public void isMove(MovingStrategy movingStrategy) {
         if(movingStrategy.movable()){
             this.moveCount++;
         }
     }
 
-    public boolean isMove(int randomNumber) {
-        if(randomNumber >= FORWARD_NUM){
-            this.moveCount++;
-            return true;
-        }
-        return false;
+    public String showName() {
+        return getName();
     }
 
-    public boolean isMove() {
-        if(getRandom() >= FORWARD_NUM){
-            this.moveCount++;
-            return true;
-        }
-        return false;
-    }
-    // 테스트 가능한 코드로 변경되었다.
-    protected int getRandom() {
-        Random random = new Random();
-        return random.nextInt(FINAL_NUM);
+    public int showMoveCount() {
+        return getMoveCount();
     }
 }
