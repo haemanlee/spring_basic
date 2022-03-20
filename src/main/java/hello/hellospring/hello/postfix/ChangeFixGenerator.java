@@ -66,6 +66,8 @@ public class ChangeFixGenerator {
      *     문제 1. 포스트픽스를 인픽스로 변환하기
      *     포스트픽스 예) 123*+, 123+-5*
      *     인픽스 예) 1+2*3, (1-(2+3))*5
+     *     시간복잡도 O(N) 1번순회
+     *     공간복잡도 O(N) 최대 N만큼 스택에 쌓임
      */
     public static String post2In(String formula) {
         Stack<String> stack = new Stack<>();
@@ -91,51 +93,45 @@ public class ChangeFixGenerator {
      *     프리픽스 : *-+2315
      *     인픽스 : 1-(2+3)
      *     프리픽스 : -+231
+     *     시간복잡도 O(N) 1번순회
+     *     공간복잡도 O(N) 최대 N만큼 스택에 쌓임
      */
     public static String infixToPrefix(String formula) {
-        StringBuilder result = new StringBuilder();
-        StringBuilder input = new StringBuilder(formula);
-        input.reverse();
-        Stack<Character> stack = new Stack<Character>();
+        String prefix = "";
+        Stack<Character> operators = new Stack<>();
 
-        char [] charsExp = new String(input).toCharArray();
-        for (int i = 0; i < charsExp.length; i++) {
+        for (int i = formula.length() - 1; i >= 0; --i) {
+            char ch = formula.charAt(i);
 
-            if (charsExp[i] == '(') {
-                charsExp[i] = ')';
-                i++;
-            }
-            else if (charsExp[i] == ')') {
-                charsExp[i] = '(';
-                i++;
-            }
-        }
-        for (int i = 0; i <charsExp.length ; i++) {
-            char c = charsExp[i];
-
-            //check if char is operator or operand
-            if(precedence(c)>0){
-                while(stack.isEmpty()==false && precedence(stack.peek())>=precedence(c)){
-                    result.append(stack.pop());
+            if (precedence(ch) > 0) {
+                while (operators.isEmpty() == false &&  precedence(operators.peek()) > precedence(ch)) {
+                    prefix += operators.pop();
                 }
-                stack.push(c);
-            }else if(c==')'){
-                char x = stack.pop();
-                while(x!='('){
-                    result.append(x);
-                    x = stack.pop();
+                operators.push(ch);
+            } else if (ch == '(') {
+
+                char x = operators.pop();
+                while (x != ')') {
+                    prefix += x;
+                    x = operators.pop();
                 }
-            }else if(c=='('){
-                stack.push(c);
-            }else{
-                //character is neither operator nor "("
-                result.append(c);
+
+            } else if (ch == ')') {
+                operators.push(ch);
+            } else {
+                prefix += ch;
             }
+            System.out.println(prefix);
         }
 
-        for (int i = 0; i <=stack.size() ; i++) {
-            result.append(stack.pop());
+        while (!operators.isEmpty()) {
+            prefix += operators.pop();
         }
-        return String.valueOf(result.reverse());
+
+        String reversedPrefix = "";
+        for (int i = prefix.length() - 1; i >= 0; i--) {
+            reversedPrefix += prefix.charAt(i);
+        }
+        return reversedPrefix;
     }
 }

@@ -1,4 +1,4 @@
-package hello.hellospring;
+package hello.hellospring.hello;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

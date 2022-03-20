@@ -29,6 +29,7 @@ class ChangeFixGeneratorTest {
     @Test
     void infixToPrefix1() {
         Assertions.assertThat(ChangeFixGenerator.infixToPrefix("A+B*(C^D-E)")).isEqualTo("+A*B-^CDE");
+        Assertions.assertThat(ChangeFixGenerator.infixToPrefix("(a-b/c)*(a/k-l)")).isEqualTo("*-a/bc-/akl");
 
     }
 }

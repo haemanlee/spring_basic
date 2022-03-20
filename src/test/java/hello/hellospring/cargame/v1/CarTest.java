@@ -1,4 +1,4 @@
-package hello.hellospring.hello.cargame.v1;
+package hello.hellospring.cargame.v1;
 
 import hello.hellospring.cargame.v1.Car;
 import org.assertj.core.api.Assertions;

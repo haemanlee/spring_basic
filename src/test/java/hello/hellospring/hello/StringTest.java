@@ -1,4 +1,4 @@
-package hello.hellospring;
+package hello.hellospring.hello;
 
 import hello.hellospring.hello.TestString;
 import org.assertj.core.api.Assertions;
