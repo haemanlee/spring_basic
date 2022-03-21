@@ -1,5 +1,6 @@
 package hello.hellospring.hello.stack;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Arrays;
 import java.util.Stack;
 
@@ -24,6 +25,10 @@ public class BigNumber {
         System.out.println(Arrays.toString(BigNumber.convert(input1)));
         System.out.println(Arrays.toString(BigNumber.convert(input2)));
         System.out.println(Arrays.toString(BigNumber.convert(input3)));
+
+        System.out.println(Arrays.toString(BigNumber.convert2(input1)));
+        System.out.println(Arrays.toString(BigNumber.convert2(input2)));
+        System.out.println(Arrays.toString(BigNumber.convert2(input3)));
     }
 
     /**
@@ -33,15 +38,31 @@ public class BigNumber {
     private static int[] convert(int[] input) {
         int[] result = new int[input.length];
         for (int i = 0; i < input.length; i++) {
+            result[i] = -1;
             for (int j = i + 1; j < result.length; j++) {
                 if(input[i] < input[j]){
                     result[i] = input[j];
                     break;
                 }
-                result[i] = -1;
             }
         }
-        result[input.length-1] = -1;
+        return result;
+    }
+    /**
+     * 시간복잡도 O(N) : 루프 1번
+     * 공간복잡도 O(N) : n길이 int배열 생성
+     **/
+    private static int[] convert2(int[] input) {
+        int[] result = new int[input.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < result.length; i++) {
+            result[i] = -1;
+            while(!stack.isEmpty() && input[stack.peek()] < input[i]){
+                result[stack.pop()] = input[i];
+            }
+
+            stack.push(i);
+        }
         return result;
     }
 }
